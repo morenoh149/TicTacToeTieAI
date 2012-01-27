@@ -1,7 +1,7 @@
 package tictactoeai;
 
 public class Oplace implements Place {
-	private int hold = 1;
+	private int hold = 2;
 	
 	public Oplace(){
 	}
