@@ -1,26 +1,39 @@
 package tictactoeai;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Board {
-	private List<Place> board;
+	private Place[] board;
 	
 	public Board(){
-		board = new ArrayList<Place>(9); 
-		for(int i=0; i<9; i++){
-			board.add(new Emptyplace());
+		board = new Place[9]; 
+		for(int i=1; i<=9; i++){
+			board[i] = new Emptyplace(i);
 		}
 	}
-	public List<Place> getBoard(){
+	public Place[] getBoard(){
 		return board;
 	}
-	public void move(int player, int space){
-		if(player==1){
-			board.add(space, new Oplace());
+	public void move(Player player, int space){
+		if(player.getType()=="Minimax-Win" ||
+				player.getType()=="Minimax-Tie"){
+			board[space] = new Oplace();
 		}
-		if(player==2){
-			board.add(space, new Xplace());
+		if(player.getType()=="Minimax-Win" ||
+				player.getType()=="Minimax-Tie"){
+			board[space] = new Xplace();
 		}
+	}
+	public String toString(){
+		StringBuilder sb = new StringBuilder();
+		for(int i=1; i<=9; i++){
+			sb.append(board[i]+" ");
+			if(i%3==0){
+				sb.append("\n");
+			}
+		}
+		return sb.toString();
 	}
 }

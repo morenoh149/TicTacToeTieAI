@@ -2,8 +2,10 @@ package tictactoeai;
 
 public class Emptyplace implements Place {
 	private int hold=0;
+	private int square;
 
-	public Emptyplace(){
+	public Emptyplace(int location){
+		this.square=location;
 	}
 
 	@Override
@@ -18,7 +20,7 @@ public class Emptyplace implements Place {
 
 	@Override
 	public String printPlace() {
-		return " ";
+		return Integer.valueOf(square).toString();
 	}
 
 	@Override
