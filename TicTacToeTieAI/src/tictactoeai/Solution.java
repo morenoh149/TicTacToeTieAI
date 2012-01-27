@@ -22,6 +22,7 @@ public class Solution {
 		else{
 			Player opp = new Opponent(false);
 		}
+		System.out.println(minimax.getType()+" vs "+opp.getType());
 		Board game = new Board();
 		String state;
 		while(!game.isOver()){
