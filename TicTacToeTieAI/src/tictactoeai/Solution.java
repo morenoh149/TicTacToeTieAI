@@ -22,14 +22,15 @@ public class Solution {
 		else{
 			Player opp = new Opponent(false);
 		}
+		Board game = new Board();
 		String state;
 		while(!game.isOver()){
 			minimax.makeMove();
-			state = game.print();
+			state = game.toString();
 			System.out.println(state);
 			log.append(state);
 			opp.makeMove();
-			state = game.print();
+			state = game.toString();
 			System.out.println(state);
 		}
 		try{
@@ -38,7 +39,7 @@ public class Solution {
 			String playerType2 = opp.getType();
 			FileWriter fstream = new FileWriter("log_"+playerType1+"_vs_+"+playerType2+".txt");
 			BufferedWriter out = new BufferedWriter(fstream);
-			out.write();
+			out.write(log.toString());
 			
 			//Close the output stream
 			out.close();
