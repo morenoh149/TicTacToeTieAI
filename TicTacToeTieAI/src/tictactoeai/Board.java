@@ -8,9 +8,9 @@ public class Board {
 	private Place[] board;
 	private boolean isWon;
 	int winner;
-	
+
 	public Board(){
-		board = new Place[9]; 
+		board = new Place[10]; 
 		for(int i=1; i<=9; i++){
 			board[i] = new Emptyplace(i);
 		}
@@ -47,32 +47,76 @@ public class Board {
 		}else{
 			full=true;
 		}
-		if(win(1,4,7)||win(2,5,8)||win(3,6,9)||win(1,2,3)||win(4,5,6)||win(7,8,9)||win(1,5,9)||win(7,5,3)){
+		if(win(1,4,7)||win(2,5,8)||win(3,6,9)||win(1,2,3)||
+				win(4,5,6)||win(7,8,9)||win(1,5,9)||win(7,5,3)){
 			won=true;
 		}
-		
 		return full || won;
 	}
+	/**
+	 * returns the hold value of the player who won
+	 * @return 0 if no one won
+	 */
 	public int whoWon(){
-		if(win(1,4,7)){
-			
+		List<List<Integer>> lines = new ArrayList<List<Integer>>(8);
+		ArrayList<Integer> l1 = new ArrayList<Integer>(3);
+		l1.add(1);	l1.add(4);	l1.add(7);
+		ArrayList<Integer> l2 = new ArrayList<Integer>(3);
+		l2.add(2);	l2.add(5);	l2.add(8);
+		ArrayList<Integer> l3 = new ArrayList<Integer>(3);
+		l3.add(3);	l3.add(6);	l3.add(9);
+		ArrayList<Integer> l4 = new ArrayList<Integer>(3);
+		l4.add(1);	l4.add(2);	l4.add(3);
+		ArrayList<Integer> l5 = new ArrayList<Integer>(3);
+		l5.add(4);	l5.add(5);	l5.add(6);
+		ArrayList<Integer> l6 = new ArrayList<Integer>(3);
+		l6.add(7);	l6.add(8);	l6.add(9);
+		ArrayList<Integer> l7 = new ArrayList<Integer>(3);
+		l7.add(1);	l7.add(5);	l7.add(9);
+		ArrayList<Integer> l8 = new ArrayList<Integer>(3);
+		l8.add(3);	l8.add(5);	l8.add(7);
+		lines.add(l1);	lines.add(l2);	lines.add(l3);
+		lines.add(l4);	lines.add(l5);	lines.add(l6);
+		lines.add(l7);	lines.add(l8);
+		for(List<Integer> l: lines){
+			if(win(l)){
+				return board[l.get(0)].getPlace();
+			}
 		}
+		return 0;
 	}
 	public String toString(){
 		StringBuilder sb = new StringBuilder();
 		for(int i=1; i<=9; i++){
-			sb.append(board[i]+" ");
+			sb.append(board[i].toString()+" ");
 			if(i%3==0){
 				sb.append("\n");
 			}
 		}
 		return sb.toString();
 	}
-	private boolean win(int p1, int p2, int p3){
-		if(board[p1].getPlace()==1||board[p2].getPlace()==1||board[p3].getPlace()==1){
+	/**
+	 * determine winner using a list interface
+	 * @param line
+	 * @return
+	 */
+	private boolean win(List<Integer> line){
+		Iterator<Integer> itr = line.iterator();
+		int first = board[itr.next()].getPlace();
+		int second = board[itr.next()].getPlace();
+		int third = board[itr.next()].getPlace();
+		if(first==second&&second==third){
 			return true;
 		}
-		if(board[p1].getPlace()==2||board[p2].getPlace()==2||board[p3].getPlace()==2){
+		else{
+			return false;
+		}
+	}
+	private boolean win(int p1, int p2, int p3){
+		if(board[p1].getPlace()==1&&board[p2].getPlace()==1&&board[p3].getPlace()==1){
+			return true;
+		}
+		if(board[p1].getPlace()==2&&board[p2].getPlace()==2&&board[p3].getPlace()==2){
 			return true;
 		}
 		return false;
