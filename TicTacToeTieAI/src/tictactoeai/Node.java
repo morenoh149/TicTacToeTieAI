@@ -28,9 +28,10 @@ public class Node{
 		this.player = 1; //the current player who CAN move this turn on this board
 		this.goal=goal; //our goal value win/loss/tie
 		this.isMax = true;
+		this.children = new ArrayList<Node>();
 
 		Place[] places = board.getBoard();
-		for(int i=1;i<=9;i++){
+		for(int i=1; i<=9; i++){
 			if(places[i].equals(new Emptyplace(i))){
 				children.add(new Node(this, createBoard(places), goal, i, 2, false));
 			}
@@ -38,7 +39,7 @@ public class Node{
 		this.score=getScore(children, isMax);
 	}
 	/**
-	 * this constructor handels building chld nodes which are more complicated or could be used to dynamically assign the minimax player to the sencond position.
+	 * this constructor handles building chld nodes which are more complicated or could be used to dynamically assign the minimax player to the sencond position.
 	 * @param parent the parent node
 	 * @param board the board as the parent has it
 	 * @param goal the goal state
@@ -55,7 +56,7 @@ public class Node{
 		board.makeMove(player, move);
 		if(board.isOver()!=true){
 			Place[] places = board.getBoard();
-			for(int i=1;i<9;i++){
+			for(int i=1; i<=9; i++){
 				if(places[i].equals(new Emptyplace(i))){
 					if(this.player==1){
 						children.add(new Node(this, createBoard(places), goal, i, 2, false));
@@ -138,12 +139,6 @@ public class Node{
 	public Node getParent(){
 		return parent;
 	}
-	
-	/**
-	 * 
-	 * @return
-	 */
-	
 	public Board getState(){
 		return this.board;
 	}
@@ -158,7 +153,6 @@ public class Node{
 		return new Board(places);
 	}
 	private int getScore(List<Node> children, boolean isMax){
-		System.out.println("gettingscore");
 		int a=0;
 		if(isMax){
 			for(Node n: children){

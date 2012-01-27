@@ -122,11 +122,11 @@ public class Board {
 		return false;
 	}
 	public boolean equals(Board b){
-		for(Place p: b.getBoard()){
-			for(Place q: this.board){
-				if(p.getPlace()!=q.getPlace())
-					return false;
-			}
+		System.out.println("comparing");
+		Place[] p = b.getBoard();
+		for(int i=1; i<=9; i++){
+			if(p[i].getPlace()!=this.board[i].getPlace())
+				return false;
 		}
 		return true;
 	}
