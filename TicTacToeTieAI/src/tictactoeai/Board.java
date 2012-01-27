@@ -10,7 +10,7 @@ public class Board {
 	int winner;
 	
 	public Board(){
-		board = new Place[9]; 
+		board = new Place[10]; 
 		for(int i=1; i<=9; i++){
 			board[i] = new Emptyplace(i);
 		}
