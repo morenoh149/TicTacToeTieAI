@@ -33,7 +33,7 @@ public class Node{
 		Place[] places = board.getBoard();
 		for(int i=1; i<=9; i++){
 			if(places[i].equals(new Emptyplace(i))){
-				children.add(new Node(this, createBoard(places), goal, i, 2, false));
+				children.add(new Node(this, createBoard(places), goal, i, 1, false));
 			}
 		}
 		this.score=getScore(children, isMax);
@@ -59,9 +59,9 @@ public class Node{
 			for(int i=1; i<=9; i++){
 				if(places[i].equals(new Emptyplace(i))){
 					if(this.player==1){
-						children.add(new Node(this, createBoard(places), goal, i, 2, false));
+						children.add(new Node(this, createBoard(places), goal, i, 2, true));
 					}else{
-						children.add(new Node(this, createBoard(places), goal, i, 1, true));
+						children.add(new Node(this, createBoard(places), goal, i, 1, false));
 					}
 				}
 			}
