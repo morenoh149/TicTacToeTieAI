@@ -41,24 +41,24 @@ public class Board {
 		if(numOfFreeSpaces==0){
 			return true;
 		}
-		boolean full=false;
+//		boolean full=false;
 		boolean won=false;
-		int empty=0;
-		for(int i=1; i<=9; i++){
-			if(board[i].getPlace()==0){
-				empty++;
-			}
-		}
-		if(empty!=0){
-			full=false;
-		}else{
-			full=true;
-		}
+//		int empty=0;
+//		for(int i=1; i<=9; i++){
+//			if(board[i].getPlace()==0){
+//				empty++;
+//			}
+//		}
+//		if(empty!=0){
+//			full=false;
+//		}else{
+//			full=true;
+//		}
 		if(win(1,4,7)||win(2,5,8)||win(3,6,9)||win(1,2,3)||
-				win(4,5,6)||win(7,8,9)||win(1,5,9)||win(7,5,3)){
+				win(4,5,6)||win(7,8,9)||win(1,5,9)||win(3,5,7)){
 			won=true;
 		}
-		return full || won;
+		return won;
 	}
 	/**
 	 * returns the hold value of the player who won
