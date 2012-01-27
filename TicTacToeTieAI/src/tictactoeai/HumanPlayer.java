@@ -8,14 +8,12 @@ public class HumanPlayer implements Player{
 	}
 	@Override
 	public void makeMove(Board board, int move) {
-		// TODO Auto-generated method stub
-		
+		board.makeMove(playerNum, move);
 	}
 
 	@Override
 	public String getType() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Human";
 	}
 
 }
