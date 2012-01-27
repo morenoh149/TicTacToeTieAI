@@ -1,5 +1,7 @@
 package tictactoeai;
 
+import java.util.Scanner;
+
 
 public class HumanPlayer implements Player{
 	int playerNum;
@@ -7,7 +9,18 @@ public class HumanPlayer implements Player{
 		playerNum=num;
 	}
 	@Override
-	public void makeMove(Board board, int move) {
+	public void makeMove(Board board){
+		Scanner s = new Scanner(System.in);
+		int move = s.nextInt();
+		while(move>9||move<1){
+			try {
+				throw new Exception("you're a dunce!");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			move = s.nextInt();
+		}
 		board.makeMove(playerNum, move);
 	}
 

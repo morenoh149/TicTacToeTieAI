@@ -10,7 +10,7 @@ public class SimplePlayer implements Player{
 	 * assumes board contains at least one empty square
 	 */
 	@Override
-	public void makeMove(Board board, int space) {
+	public void makeMove(Board board) {
 		Place[] array = board.getBoard();
 		for(int i=1; i<=9; i++){
 			if(array[i].getPlace()==0){

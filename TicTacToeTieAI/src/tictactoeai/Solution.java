@@ -33,15 +33,7 @@ public class Solution {
 			state = board.toString();
 			System.out.println(state);
 			log.append(state);
-			if(human){
-				input = s.nextInt();
-				while(input>9||input<1){
-					throw new Exception("you're a dunce!");
-					input = s.nextInt();
-				}
-				opp.makeMove(board, input);
-			}
-			opp.makeMove(board, 0); //simple player disregards space value!
+			opp.makeMove(board);
 			state = board.toString();
 			System.out.println(state);
 		}
