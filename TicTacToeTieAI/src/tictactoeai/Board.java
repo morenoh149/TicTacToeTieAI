@@ -121,4 +121,13 @@ public class Board {
 		}
 		return false;
 	}
+	public boolean equals(Board b){
+		for(Place p: b.getBoard()){
+			for(Place q: this.board){
+				if(p.getPlace()!=q.getPlace())
+					return false;
+			}
+		}
+		return true;
+	}
 }

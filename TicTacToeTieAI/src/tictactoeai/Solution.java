@@ -17,19 +17,18 @@ public class Solution {
 		else{
 			Player minimax = new Minimax(false);
 		}
-		boolean human = false;
 		if(opponentVer=="simple"){
 			opp = new SimplePlayer(2);
 		}
 		else{
 			opp = new HumanPlayer(2);
-			human = true;
 		}
 		String state,commentary;
 		int input;
 		while(!board.isOver()){
 			minimax.makeMove(board);
-			commentary = "----------------\nPlayer "+minimax.getType()
+			commentary = "----------------\n";
+			commentary += "Player "+minimax.getType()+" adds a X to position "+;
 			state = board.toString();
 			System.out.println(state);
 			log.append(state);
