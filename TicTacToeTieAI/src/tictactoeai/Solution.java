@@ -10,12 +10,12 @@ public class Solution {
 		String opponentVer = s.nextLine();
 		StringBuilder log = new StringBuilder();
 		Board board = new Board();
-		Player opp;
-		if(minimaxVer=="win"){
-			Player minimax = new Minimax(true);
+		Player opp, minimax;
+		if(minimaxVer.equals("win")){
+			minimax = new MinimaxWin();
 		}
 		else{
-			Player minimax = new Minimax(false);
+			minimax = new MinimaxTie();
 		}
 		if(opponentVer=="simple"){
 			opp = new SimplePlayer(2);
@@ -24,11 +24,11 @@ public class Solution {
 			opp = new HumanPlayer(2);
 		}
 		String state,commentary;
-		int input;
 		while(!board.isOver()){
 			minimax.makeMove(board);
 			commentary = "----------------\n";
-			commentary += "Player "+minimax.getType()+" adds a X to position "+;
+			//commentary += "Player "+minimax.getType()+" adds a X to position ";
+			System.out.println(commentary);
 			state = board.toString();
 			System.out.println(state);
 			log.append(state);
@@ -36,7 +36,8 @@ public class Solution {
 			state = board.toString();
 			System.out.println(state);
 		}
-		
+		if(board.isOver())
+			System.out.println("is Over!");
 		try{
 			// Create file
 			String playerType1 = minimax.getType();

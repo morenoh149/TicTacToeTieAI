@@ -30,7 +30,7 @@ public class Node{
 		this.isMax = true;
 
 		Place[] places = board.getBoard();
-		for(int i=1;i<9;i++){
+		for(int i=1;i<=9;i++){
 			if(places[i].equals(new Emptyplace(i))){
 				children.add(new Node(this, createBoard(places), goal, i, 2, false));
 			}
@@ -158,6 +158,7 @@ public class Node{
 		return new Board(places);
 	}
 	private int getScore(List<Node> children, boolean isMax){
+		System.out.println("gettingscore");
 		int a=0;
 		if(isMax){
 			for(Node n: children){

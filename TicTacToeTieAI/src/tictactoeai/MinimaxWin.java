@@ -7,9 +7,11 @@ public class MinimaxWin implements Player {
 
 	
 	MinimaxWin(){
+		System.out.println("minimax made");
 		tree = new Node(1);
 		activeNode=tree;
 		firstMove=true;
+		System.out.println("minimax made");
 	}
 	
 
@@ -24,6 +26,7 @@ public class MinimaxWin implements Player {
 
 	@Override
 	public void makeMove(Board board) {
+		System.out.println("making move");
 		if(firstMove){
 			int score=activeNode.getScore();
 			for(Node n: activeNode.getChildren()){
@@ -48,6 +51,7 @@ public class MinimaxWin implements Player {
 				}
 			}
 			board.makeMove(1, activeNode.getMovement());
+			this.firstMove = false;
 		}
 		return;
 	}

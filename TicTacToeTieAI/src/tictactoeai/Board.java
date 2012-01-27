@@ -88,7 +88,7 @@ public class Board {
 	public String toString(){
 		StringBuilder sb = new StringBuilder();
 		for(int i=1; i<=9; i++){
-			sb.append(board[i].toString()+" ");
+			sb.append(board[i].printPlace()+" ");
 			if(i%3==0){
 				sb.append("\n");
 			}
