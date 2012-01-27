@@ -25,10 +25,11 @@ public class Solution {
 			opp = new HumanPlayer(2);
 			human = true;
 		}
-		String state;
+		String state,commentary;
 		int input;
 		while(!board.isOver()){
 			minimax.makeMove(board);
+			commentary = "----------------\nPlayer "+minimax.getType()
 			state = board.toString();
 			System.out.println(state);
 			log.append(state);
