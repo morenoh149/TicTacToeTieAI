@@ -2,7 +2,7 @@ package tictactoeai;
 
 
 public class Xplace implements Place {
-	private int hold=2;
+	private int hold=1;
 
 	public Xplace(){
 	}
