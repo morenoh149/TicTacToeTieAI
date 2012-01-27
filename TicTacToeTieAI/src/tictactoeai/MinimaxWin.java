@@ -18,21 +18,39 @@ public class MinimaxWin implements Player {
 		return "minimax-Win";
 	}
 
+	public String toString(){
+		return "";
+	}
 
 	@Override
 	public void makeMove(Board board) {
 		if(firstMove){
-			board.makeMove(1, activeNode.getMove(board, firstMove).getMovement());
-			firstMove=false;	
-			return;
-		}
-		for(Node n: activeNode.getChildren()){
-			if(board.equals(n.getState())){
-				activeNode=n;
+			int score=activeNode.getScore();
+			for(Node n: activeNode.getChildren()){
+				if(n.getScore()==score){
+					activeNode=n;
+					break;
+				}
 			}
+			board.makeMove(1, activeNode.getMovement());
+		}else{
+			for(Node n: activeNode.getChildren()){
+				if(n.getState()==board){
+					activeNode=n;
+					break;
+				}
+			}
+			int score=activeNode.getScore();
+			for(Node n: activeNode.getChildren()){
+				if(n.getScore()==score){
+					activeNode=n;
+					break;
+				}
+			}
+			board.makeMove(1, activeNode.getMovement());
 		}
-		board.makeMove(1, activeNode.getMove(board, firstMove).getMovement());
-		
+		return;
 	}
+		
 
 }

@@ -125,15 +125,12 @@ public class Node{
 		}
 		return a;
 	}
-	public Node getMove(Board board, boolean firstMove) {
-		if(firstMove){
-			int score = this.score;
-			for(Node n: children){
-				if(n.getScore()==score);
-				return n;
-			}
+	public Node getMove(Board board) {
+		int score = this.score;
+		for(Node n: children){
+			if(n.getScore()==score);
+			return n;
 		}
-		if()
 		return null;
 	}
 	public int getMovement() {
