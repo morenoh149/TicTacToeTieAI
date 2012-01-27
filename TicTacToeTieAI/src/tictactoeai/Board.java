@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Board {
-	private List<place> board;
+	private List<Place> board;
 	
 	public Board(){
-		board = new ArrayList<place>(); 
-		for(int i=0;i==9;i++){
+		board = new ArrayList<Place>(9); 
+		for(int i=0; i<9; i++){
 			board.add(new Emptyplace());
 		}
 	}
-	public List<place> getBoard(){
+	public List<Place> getBoard(){
 		return board;
 	}
 	public void move(int player, int space){

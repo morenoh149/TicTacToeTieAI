@@ -1,14 +1,14 @@
 package tictactoeai;
 
 
-public class Xplace implements place {
+public class Xplace implements Place {
 	private int hold=2;
 
 	public Xplace(){
 	}
 	
 	@Override
-	public boolean equals(place place) {
+	public boolean equals(Place place) {
 		return this.getPlace()==place.getPlace();
 	}
 

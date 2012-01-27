@@ -1,7 +1,7 @@
 package tictactoeai;
 
-public interface place {
-	boolean equals(place place);
+public interface Place {
+	boolean equals(Place place);
 	int getPlace();
 	String printPlace();
 	boolean isEmpty();

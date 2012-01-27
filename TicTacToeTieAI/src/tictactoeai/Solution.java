@@ -32,7 +32,6 @@ public class Solution {
 			state = game.print();
 			System.out.println(state);
 		}
-		
 		try{
 			// Create file
 			String playerType1 = minimax.getType();
