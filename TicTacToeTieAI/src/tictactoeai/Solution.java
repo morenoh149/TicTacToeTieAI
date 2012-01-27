@@ -17,26 +17,37 @@ public class Solution {
 		else{
 			Player minimax = new Minimax(false);
 		}
+		boolean human = false;
 		if(opponentVer=="simple"){
-			opp = new HumanPlayer(2);
-		}
-		else{
 			opp = new SimplePlayer(2);
 		}
+		else{
+			opp = new HumanPlayer(2);
+			human = true;
+		}
 		String state;
+		int input;
 		while(!board.isOver()){
 			minimax.makeMove(board);
 			state = board.toString();
 			System.out.println(state);
 			log.append(state);
-			opp.makeMove(board);
+			if(human){
+				input = s.nextInt();
+				while(input>9||input<1){
+					throw new Exception("you're a dunce!");
+					input = s.nextInt();
+				}
+				opp.makeMove(board, input);
+			}
+			opp.makeMove(board, 0); //simple player disregards space value!
 			state = board.toString();
 			System.out.println(state);
 		}
 		
 		try{
 			// Create file
-			String playerType1 = search.getType();
+			String playerType1 = minimax.getType();
 			String playerType2 = opp.getType();
 			FileWriter fstream = new FileWriter("log_"+playerType1+"_vs_+"+playerType2+".txt");
 			BufferedWriter out = new BufferedWriter(fstream);

@@ -7,7 +7,7 @@ public class HumanPlayer implements Player{
 		playerNum=num;
 	}
 	@Override
-	public void makeMove(Board board) {
+	public void makeMove(Board board, int move) {
 		// TODO Auto-generated method stub
 		
 	}
