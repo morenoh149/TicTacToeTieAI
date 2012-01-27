@@ -18,6 +18,10 @@ public class Node{
 	int goal;
 	boolean isMax;
 
+	/**
+	 * this constructor makes the root node of the search tree
+	 * @param goal the goal state your are looking for 1 for win 0 for tie
+	 */
 	Node(int goal){
 		this.board = new Board(); //the current or possible board
 		this.score = 0; // a score based on the minimax algorithm
@@ -33,6 +37,15 @@ public class Node{
 		}
 		this.score=getScore(children, isMax);
 	}
+	/**
+	 * this constructor handels building chld nodes which are more complicated or could be used to dynamically assign the minimax player to the sencond position.
+	 * @param parent the parent node
+	 * @param board the board as the parent has it
+	 * @param goal the goal state
+	 * @param move the move that should be made
+	 * @param player the parent's player
+	 * @param isMax the boolean to control weather this is a min or max node
+	 */
 	Node(Node parent, Board board, int goal, int move, int player, boolean isMax){
 		this.parent = parent;
 		this.player = player;
@@ -56,6 +69,11 @@ public class Node{
 			score=generateScore(goal);
 		}
 	}
+	/**
+	 * this function generates the scores of terminal nodes
+	 * @param goal the goal state
+	 * @return the score of this node
+	 */
 	private int generateScore(int goal){
 		int ret=0;
 		if(goal==0){
@@ -84,21 +102,48 @@ public class Node{
 		}
 		return ret;
 	}
+	
+	/**
+	 * returns the score of the node
+	 * @return the node's score
+	 */
+	
 	public int getScore(){
 		return score;
 	}
+	
+	/**
+	 * adds a child to the node
+	 * @param child the child node to be added
+	 */
+	
 	public void addChild(Node child){
 		children.add(child);
 	}
-	public List<Node> expand(){
-		return children;
-	}
+	
+	/**
+	 * returns the children of the node
+	 * @return the List of children
+	 */
+	
 	public List<Node> getChildren(){
 		return children;
 	}
+	
+	/**
+	 * returns the node's parent
+	 * @return the parent node
+	 */
+	
 	public Node getParent(){
 		return parent;
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	
 	public Board getState(){
 		return this.board;
 	}
