@@ -2,19 +2,23 @@ package tictactoeai;
 
 public class SimplePlayer implements Player{
 	int playerNum;
-	Board board;
 	SimplePlayer(int num){
 		playerNum=num;
 	}
 	@Override
 	public void makeMove(Board board) {
-		this.board.makeMove(2, space);
+		Place[] array = board.getBoard();
+		for(int i=1; i<=9; i++){
+			if(array[i].getPlace()==0){
+				board.makeMove(2, i);
+				break;
+			}
+		}
 	}
 
 	@Override
 	public String getType() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Simple";
 	}
 
 }
