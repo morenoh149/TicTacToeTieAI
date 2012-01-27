@@ -13,13 +13,22 @@ public class Node{
 	private Node parent;
 	private List<Node> children;
 	int player;
+	int goal;
 
-	Node(){
+	Node(int goal){
 		this.board = new Board();
 		this.score = 0;
-		player = 1;
+		this.player = 1;
+		this.goal=goal;
+		Place[] places = board.getBoard();
+		for(int i=1;i<9;i++){
+			if(places[i].equals(new Emptyplace(i))){
+				new Board()
+				children.add(new Node(this, ))
+			}
+		}
 	}
-	Node(Node parent, Board board){
+	Node(Node parent, Board board, int goal){
 		this.parent = parent;
 		this.children = new ArrayList<Node>();
 		this.board = board;

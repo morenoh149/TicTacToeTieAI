@@ -6,12 +6,10 @@ import java.util.List;
 
 public class Board {
 	private Place[] board;
-	private int numMovesMade;
 	private boolean isWon;
 	int winner;
 	
 	public Board(){
-		numMovesMade=0;
 		board = new Place[9]; 
 		for(int i=1; i<=9; i++){
 			board[i] = new Emptyplace(i);
@@ -19,17 +17,20 @@ public class Board {
 		isWon=false;
 		winner=0;
 	}
+	public Board(Place[] places){
+		this.board = places;
+		winner=0;
+		isWon=isOver();
+	}
 	public Place[] getBoard(){
 		return board;
 	}
 	public void makeMove(int player, int space){
 		if(player==2){
 			board[space] = new Oplace();
-			numMovesMade++;
 		}
 		if(player==1){
 			board[space] = new Xplace();
-			numMovesMade++;
 		}
 	}
 	public boolean isOver(){
@@ -43,6 +44,8 @@ public class Board {
 		}
 		if(empty!=0){
 			full=false;
+		}else{
+			full=true;
 		}
 		if(win(1,4,7)||win(2,5,8)||win(3,6,9)||win(1,2,3)||win(4,5,6)||win(7,8,9)||win(1,5,9)||win(7,5,3)){
 			won=true;
