@@ -53,6 +53,11 @@ public class Board {
 		
 		return full || won;
 	}
+	public int whoWon(){
+		if(win(1,4,7)){
+			
+		}
+	}
 	public String toString(){
 		StringBuilder sb = new StringBuilder();
 		for(int i=1; i<=9; i++){
