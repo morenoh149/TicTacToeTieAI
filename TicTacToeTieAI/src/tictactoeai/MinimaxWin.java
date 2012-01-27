@@ -21,7 +21,21 @@ public class MinimaxWin implements Player {
 	}
 
 	public String toString(){
-		return "";
+		Node temp=activeNode;
+		String ret = "";
+		boolean ctl=true;
+		while(ctl){
+			if(temp==null){
+				ctl=false;
+			}
+			if(temp!=null){
+				ret = ret + temp.getState().toString();
+				if(temp.getParent()!=null){
+					temp=temp.getParent();
+				}
+			}
+		}
+		return ret;
 	}
 
 	@Override
