@@ -12,6 +12,7 @@ public class Node{
 	private int score;	// 1 if player 1 (us) wins, 0 if tie, -1 if player 2 (opponent) wins
 	private Board board;
 	private Node parent;
+	private int move;
 	private List<Node> children;
 	int player;
 	int goal;
@@ -35,6 +36,7 @@ public class Node{
 	Node(Node parent, Board board, int goal, int move, int player, boolean isMax){
 		this.parent = parent;
 		this.player = player;
+		this.move=move;
 		this.children = new ArrayList<Node>();
 		this.board = board;
 		board.makeMove(player, move);
@@ -91,6 +93,9 @@ public class Node{
 	public List<Node> expand(){
 		return children;
 	}
+	public List<Node> getChildren(){
+		return children;
+	}
 	public Node getParent(){
 		return parent;
 	}
@@ -119,6 +124,20 @@ public class Node{
 			}
 		}
 		return a;
+	}
+	public Node getMove(Board board, boolean firstMove) {
+		if(firstMove){
+			int score = this.score;
+			for(Node n: children){
+				if(n.getScore()==score);
+				return n;
+			}
+		}
+		if()
+		return null;
+	}
+	public int getMovement() {
+		return move;
 	}
 
 }
