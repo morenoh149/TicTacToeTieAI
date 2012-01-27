@@ -67,6 +67,5 @@ public class MinimaxTie implements Player {
 			}
 			board.makeMove(1, activeNode.getMovement());
 		}
-		return;
 	}
 }

@@ -32,7 +32,7 @@ public class Node{
 
 		Place[] places = board.getBoard();
 		for(int i=1; i<=9; i++){
-			if(places[i].equals(new Emptyplace(i))){
+			if(places[i].getPlace()==0){
 				children.add(new Node(this, createBoard(places), goal, i, 1, true));
 			}
 		}
@@ -57,7 +57,7 @@ public class Node{
 		if(board.isOver()!=true){
 			Place[] places = board.getBoard();
 			for(int i=1; i<=9; i++){
-				if(places[i].equals(new Emptyplace(i))){
+				if(places[i].getPlace()==0){
 					if(this.player==1){
 						children.add(new Node(this, createBoard(places), goal, i, 2, false));
 					}else{

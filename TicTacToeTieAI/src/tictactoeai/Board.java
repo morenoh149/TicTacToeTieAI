@@ -112,12 +112,13 @@ public class Board {
 		int first = board[itr.next()].getPlace();
 		int second = board[itr.next()].getPlace();
 		int third = board[itr.next()].getPlace();
-		if(first==second&&second==third){
+		if(first==1&&second==1&&third==1){
 			return true;
 		}
-		else{
-			return false;
+		if(first==2&&second==2&&third==1){
+			return true;
 		}
+		return false;
 	}
 	private boolean win(int p1, int p2, int p3){
 		if(board[p1].getPlace()==1&&board[p2].getPlace()==1&&board[p3].getPlace()==1){
