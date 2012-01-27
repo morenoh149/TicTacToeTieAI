@@ -11,6 +11,7 @@ public class SimplePlayer implements Player{
 	 */
 	@Override
 	public void makeMove(Board board) {
+		System.out.println("making simple move");
 		Place[] array = board.getBoard();
 		for(int i=1; i<=9; i++){
 			if(array[i].getPlace()==0){

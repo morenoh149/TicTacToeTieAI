@@ -17,7 +17,7 @@ public class MinimaxWin implements Player {
 
 	@Override
 	public String getType() {
-		return "minimax-Win";
+		return "Minimax-Win";
 	}
 
 	public String toString(){

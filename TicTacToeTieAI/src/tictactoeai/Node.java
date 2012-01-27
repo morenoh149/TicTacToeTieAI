@@ -27,13 +27,13 @@ public class Node{
 		this.score = 0; // a score based on the minimax algorithm
 		this.player = 1; //the current player who CAN move this turn on this board
 		this.goal=goal; //our goal value win/loss/tie
-		this.isMax = true;
+		this.isMax = false;
 		this.children = new ArrayList<Node>();
 
 		Place[] places = board.getBoard();
 		for(int i=1; i<=9; i++){
 			if(places[i].equals(new Emptyplace(i))){
-				children.add(new Node(this, createBoard(places), goal, i, 1, false));
+				children.add(new Node(this, createBoard(places), goal, i, 1, true));
 			}
 		}
 		this.score=getScore(children, isMax);
@@ -59,15 +59,18 @@ public class Node{
 			for(int i=1; i<=9; i++){
 				if(places[i].equals(new Emptyplace(i))){
 					if(this.player==1){
-						children.add(new Node(this, createBoard(places), goal, i, 2, true));
+						children.add(new Node(this, createBoard(places), goal, i, 2, false));
 					}else{
-						children.add(new Node(this, createBoard(places), goal, i, 1, false));
+						children.add(new Node(this, createBoard(places), goal, i, 1, true));
 					}
 				}
 			}
 			this.score=getScore(children, isMax);
 		}else{
 			score=generateScore(goal);
+		}
+		if(score==1&&board.whoWon()!=0){
+			System.out.println("Score1 board: \n"+board.toString());
 		}
 	}
 	/**
@@ -79,7 +82,7 @@ public class Node{
 		int ret=0;
 		if(goal==0){
 			int a = board.whoWon();
-			if(a==-1){
+			if(a==2){
 				ret=-1;
 			}
 			if(a==0){
@@ -88,10 +91,9 @@ public class Node{
 			if(a==1){
 				ret=-1;
 			}
-
 		}else{
 			int a = board.whoWon();
-			if(a==-1){
+			if(a==2){
 				ret=-1;
 			}
 			if(a==0){
@@ -101,6 +103,7 @@ public class Node{
 				ret=1;
 			}
 		}
+		//System.out.println("generateScore: "+ret+"\n"+board.toString());
 		return ret;
 	}
 	
@@ -153,12 +156,14 @@ public class Node{
 		return new Board(places);
 	}
 	private int getScore(List<Node> children, boolean isMax){
-		int a=0;
+		int a;
 		if(isMax){
+			a=-1;
 			for(Node n: children){
 				a = Math.max(a, n.getScore());
 			}
 		}else{
+			a=1;
 			for(Node n: children){
 				a = Math.min(a, n.getScore());
 			}

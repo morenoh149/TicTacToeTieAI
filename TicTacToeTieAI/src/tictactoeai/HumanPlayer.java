@@ -20,7 +20,6 @@ public class HumanPlayer implements Player{
 			try {
 				throw new Exception("square occupied!");
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		board.makeMove(playerNum, move);

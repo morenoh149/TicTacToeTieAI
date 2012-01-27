@@ -12,10 +12,9 @@ public class MinimaxTie implements Player {
 		firstMove=true;
 	}
 
-
 	@Override
 	public String getType() {
-		return "minimax-Tie";
+		return "Minimax-Tie";
 	}
 
 	public String toString(){

@@ -17,7 +17,7 @@ public class Solution {
 		else{
 			minimax = new MinimaxTie();
 		}
-		if(opponentVer=="simple"){
+		if(opponentVer.equals("simple")){
 			opp = new SimplePlayer(2);
 		}
 		else{
