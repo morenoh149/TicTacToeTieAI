@@ -59,10 +59,14 @@ public class MinimaxTie implements Player {
 				}
 			}
 			int score=activeNode.getScore();
+			Node n1;
 			for(Node n: activeNode.getChildren()){
-				if(n.getScore()==score){
-					activeNode=n;
-					break;
+				if(n.getScore()>score){
+					n1=n;
+					score=n.getScore();
+//				if(n.getScore()==1){
+//					activeNode=n;
+//					break;
 				}
 			}
 			board.makeMove(1, activeNode.getMovement());

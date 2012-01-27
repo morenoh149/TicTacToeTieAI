@@ -27,7 +27,7 @@ public class Node{
 		this.score = 0; // a score based on the minimax algorithm
 		this.player = 1; //the current player who CAN move this turn on this board
 		this.goal=goal; //our goal value win/loss/tie
-		this.isMax = false;
+		this.isMax = true;
 		this.children = new ArrayList<Node>();
 
 		Place[] places = board.getBoard();
