@@ -31,6 +31,9 @@ public class Solution {
 			System.out.println(commentary);
 			state = board.toString();
 			System.out.println(state);
+			if(board.isOver()){
+				break;
+			}
 			System.out.println(commentary);
 			log.append(state);
 			opp.makeMove(board);

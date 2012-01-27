@@ -7,6 +7,7 @@ import java.util.List;
 public class Board {
 	private Place[] board;
 	private boolean isWon;
+	int numOfFreeSpaces;
 	int winner;
 
 	public Board(){
@@ -16,6 +17,7 @@ public class Board {
 		}
 		isWon=false;
 		winner=0;
+		numOfFreeSpaces=9;
 	}
 	public Board(Place[] places){
 		this.board = places;
@@ -28,18 +30,23 @@ public class Board {
 	public void makeMove(int player, int space){
 		if(player==2){
 			board[space] = new Oplace();
+			numOfFreeSpaces--;
 		}
 		if(player==1){
 			board[space] = new Xplace();
+			numOfFreeSpaces--;
 		}
 	}
 	public boolean isOver(){
+		if(numOfFreeSpaces==0){
+			return true;
+		}
 		boolean full=false;
 		boolean won=false;
 		int empty=0;
-		for(int i=1;i<=9;i++){
-			if(board[i].equals(new Emptyplace(i))){
-				empty=empty+1;
+		for(int i=1; i<=9; i++){
+			if(board[i].getPlace()==0){
+				empty++;
 			}
 		}
 		if(empty!=0){

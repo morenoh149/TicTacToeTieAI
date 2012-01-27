@@ -41,9 +41,8 @@ public class MinimaxWin implements Player {
 			System.out.println("not first move");
 			for(Node n: activeNode.getChildren()){
 				System.out.println("checking nodes");
-				System.out.println(n.getState().toString());
 				if(n.getState().equals(board)){
-					System.out.println("here");
+					System.out.println("state equals board");
 					activeNode=n;
 					break;
 				}
