@@ -36,10 +36,14 @@ public class Node {
 			return 0;
 		}
 		else{
-			if(board.isWon()){
+			if(board.testWon("X")){
 				return -1;
 			}
+			if(board.testWon("O")){
+				return -1;
+			}else{
 			return 1;
+			}
 		}
 	}
 	/**

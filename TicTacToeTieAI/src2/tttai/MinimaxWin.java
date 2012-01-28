@@ -51,9 +51,10 @@ public class MinimaxWin implements Player {
 	 */
 	public int minimax(Node n, boolean maxTurn, boolean makeTree){
 		if(n.board.isOver()){
-			return n.score("win");
+			n.score = n.score("win");
+			return n.score;
 		}
-//		if(makeTree){
+		if(makeTree){
 			if(maxTurn){
 				n.makeChildren("X");
 				int max = -100;
@@ -76,10 +77,10 @@ public class MinimaxWin implements Player {
 				n.score = min;
 				return min;
 			}
-//		}
-//		else{
-//			System.out.println("score of board is: "+n.score);
-//			return n.score;
-//		}
+		}
+		else{
+			System.out.println("score of board is: "+n.score);
+			return n.score;
+		}
 	}
 }

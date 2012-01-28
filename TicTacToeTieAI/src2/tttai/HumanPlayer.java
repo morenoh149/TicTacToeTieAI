@@ -1,7 +1,6 @@
 package tttai;
 
 import java.util.Scanner;
-import tictactoeai.Board;
 
 public class HumanPlayer implements Player {
 	int playerNum;
@@ -11,7 +10,7 @@ public class HumanPlayer implements Player {
 	}
 	
 	@Override
-	public tttai.Board makeMove(tttai.Board board){
+	public Board makeMove(Board board){
 		Scanner s = new Scanner(System.in);
 		int move = s.nextInt();
 		while(move>9||move<1){

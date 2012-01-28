@@ -15,6 +15,9 @@ public class Board {
 		spacesFree = 9;
 		winner = null;
 	}
+	Board(String[] array){
+		this.board = array;
+	}
 	/**
 	 * constructor for creating a new board with an updated move
 	 * @param b
@@ -49,8 +52,7 @@ public class Board {
 			this.winner = "O";
 			return true;
 		}
-		else
-			return false;
+		return false;
 	}
 	/**
 	 * returns true if string is the winner
