@@ -25,27 +25,27 @@ public class Solution {
 		}
 		String currentState,commentary;
 		while(!board.isOver()){
-			minimax.makeMove(board);
+			board = minimax.makeMove(board);
 			commentary = "----------------\n";
 			//commentary += "Player "+minimax.getType()+" adds a X to position ";
 			System.out.println(commentary);
-			state = board.toString();
-			System.out.println(state);
+			currentState = board.toString();
+			System.out.println(currentState);
 			if(board.isOver()){
 				break;
 			}
 			System.out.println(commentary);
-			log.append(state);
-			opp.makeMove(board);
-			state = board.toString();
-			System.out.println(state);
+			log.append(currentState);
+			board = opp.makeMove(board);
+			currentState = board.toString();
+			System.out.println(currentState);
 		}
 		if(board.isOver())
 			System.out.println("is Over!");
 		try{
 			// Create file
-			String playerType1 = minimax.getType();
-			String playerType2 = opp.getType();
+			String playerType1 = minimax.type;
+			String playerType2 = opp.type;
 			FileWriter fstream = new FileWriter("log_"+playerType1+"_vs_+"+playerType2+".txt");
 			BufferedWriter out = new BufferedWriter(fstream);
 			out.write(log.toString());

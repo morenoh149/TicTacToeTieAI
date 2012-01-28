@@ -1,10 +1,11 @@
 package tttai;
 
 public interface Player {
+	public String type="null";
 	/**
 	 * modifies the global board with a move
 	 */
-	void makeMove(Board board);
+	Board makeMove(Board board);
 	
 	String toString();
 }
