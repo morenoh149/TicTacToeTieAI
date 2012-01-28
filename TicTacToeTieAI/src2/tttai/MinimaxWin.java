@@ -24,7 +24,6 @@ public class MinimaxWin implements Player {
 			return currentNode.board;
 		}
 		else{
-			System.out.println("not first turn");
 			for(Node c: currentNode.children){
 				if(b.equals(c.board)){
 					currentNode = c;
@@ -54,7 +53,7 @@ public class MinimaxWin implements Player {
 		if(n.board.isOver()){
 			return n.score("win");
 		}
-		if(makeTree){
+//		if(makeTree){
 			if(maxTurn){
 				n.makeChildren("X");
 				int max = -100;
@@ -77,10 +76,10 @@ public class MinimaxWin implements Player {
 				n.score = min;
 				return min;
 			}
-		}
-		else{
-			System.out.println("score of board is: "+n.score);
-			return n.score;
-		}
+//		}
+//		else{
+//			System.out.println("score of board is: "+n.score);
+//			return n.score;
+//		}
 	}
 }
