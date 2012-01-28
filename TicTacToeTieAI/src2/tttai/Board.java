@@ -2,8 +2,6 @@ package tttai;
 
 import java.util.Arrays;
 
-import tictactoeai.Place;
-
 public class Board {
 	String[] board = {"0","1","2","3",
 			"4","5","6",
@@ -51,6 +49,15 @@ public class Board {
 		if(this.testWon("O")){
 			this.winner = "O";
 			return true;
+		}
+		return false;
+	}
+	public boolean isTie(){
+		if(this.spacesFree==0){
+			if((!this.testWon("X"))&&
+			   (!this.testWon("O"))){
+				return true;
+			}
 		}
 		return false;
 	}
@@ -104,5 +111,13 @@ public class Board {
 			}
 		}
 		return sb.toString();
+	}
+	public String diff(Board b){
+		for(int i=1; i<=9; i++){
+			if(!b.board[i].equals(this.board[i])){
+				return this.board[i];
+			}
+		}
+		return null;
 	}
 }

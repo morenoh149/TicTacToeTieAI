@@ -6,6 +6,7 @@ public class Node {
 	Board board;
 	Node parent;
 	int score;
+	int sum;
 	List<Node> children;
 
 	Node(Board board, Node parent){
@@ -36,14 +37,9 @@ public class Node {
 			return 0;
 		}
 		else{
-			if(board.testWon("X")){
-				return -1;
-			}
-			if(board.testWon("O")){
-				return -1;
-			}else{
-			return 1;
-			}
+			if(board.isTie())
+				return 1;
+			return -1;
 		}
 	}
 	/**
@@ -51,10 +47,22 @@ public class Node {
 	 * null if no such value found
 	 */
 	public Node find(int branch){
+		Node result = null;
 		for(Node c: this.children){
-			if(c.score==branch)
-				return c;
+			if(c.score==branch&&c.sum>0){
+				result = c;
+			}
 		}
+		if(result==null){
+			for(Node c: this.children){
+				if(c.score==branch)
+					result = c;
+			}
+		}
+		if(result!=null)
+			return result;
+		if(children.size()==1)
+			return children.get(0);
 		System.out.println("no such branch found, returning this");
 		return this;
 	}

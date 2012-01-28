@@ -1,12 +1,36 @@
-X 2 3 
+----------------
+Player Minimax-Tie adds a X to position 1X 2 3 
 4 5 6 
 7 8 9 
-X X 3 
-4 5 6 
-O 8 9 
-X X O 
-X 5 6 
-O 8 9 
-X X O 
-X X 6 
-O O 9 
+----------------
+Player Human adds a O to position 5X 2 3 
+4 O 6 
+7 8 9 
+----------------
+Player Minimax-Tie adds a X to position 9X 2 3 
+4 O 6 
+7 8 X 
+----------------
+Player Human adds a O to position 2X O 3 
+4 O 6 
+7 8 X 
+----------------
+Player Minimax-Tie adds a X to position 8X O 3 
+4 O 6 
+7 X X 
+----------------
+Player Human adds a O to position 3X O O 
+4 O 6 
+7 X X 
+----------------
+Player Minimax-Tie adds a X to position 6X O O 
+4 O X 
+7 X X 
+----------------
+Player Human adds a O to position 4X O O 
+O O X 
+7 X X 
+----------------
+Player Minimax-Tie adds a X to position 7X O O 
+O O X 
+X X X 

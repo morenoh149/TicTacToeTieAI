@@ -3,22 +3,25 @@ package tttai;
 public class MinimaxTie implements Player {
 	boolean maxTurn;
 	boolean firstTurn;
-	public String type = "Minimax-Tie";
 	Node root;
 	Node currentNode;
+	String lastmove;
 
 	MinimaxTie(){
 		maxTurn=true;
 		firstTurn=true;
 	}
+	public String getType(){
+		return "Minimax-Tie";
+	}
 	@Override
 	public Board makeMove(Board b) {
 		if(firstTurn){
-			System.out.println("first turn");
 			root = new Node(b, null);
 			minimax(root, maxTurn, firstTurn);
 			currentNode = root.children.get((int)(Math.random()*10)%9);
 			this.firstTurn=false;
+			lastmove = b.diff(currentNode.board);
 			return currentNode.board;
 		}
 		else{
@@ -26,18 +29,15 @@ public class MinimaxTie implements Player {
 				if(b.equals(c.board)){
 					currentNode = c;
 					maxTurn=true; firstTurn=false;
-					System.out.println("currentnode children are:");
-					int i=0;
-					for(Node d: currentNode.children){
-						System.out.println(d.score);
-						System.out.println(i++);
+					System.out.println("current node children: ");
+					for(Node d: c.children){
+						System.out.println("score: "+d.score);
+						System.out.println("sum: "+d.sum);
 						System.out.println(d.board.toString());
 					}
 					int branch = minimax(currentNode, maxTurn, firstTurn);
-					System.out.println("branch found: "+branch);
-					if(currentNode != currentNode.find(branch))
-						System.out.println("moving to lower node");
 					currentNode = currentNode.find(branch);//set the currentNode to the one indicated by minimax
+					lastmove = b.diff(currentNode.board);
 					return currentNode.board;
 				}
 			}
@@ -49,36 +49,48 @@ public class MinimaxTie implements Player {
 	 */
 	public int minimax(Node n, boolean maxTurn, boolean makeTree){
 		if(n.board.isOver()){
-			n.score = n.score("tie");
-			return n.score;
+			n.score = n.score("win");
+			n.sum = n.score("tie");
+			return n.sum;
 		}
 		if(makeTree){
 			if(maxTurn){
 				n.makeChildren("X");
 				int max = -100;
+				int sum = 0;
 				for(Node c: n.children){
 					int minimaxVal = minimax(c, false, true);
+					if(minimaxVal>0)
+						sum++;
 					if(minimaxVal>max)
 						max = minimaxVal;
 				}
 				n.score = max;
-				return max;
+				n.sum = sum;
+				return sum;
 			}
 			else{
 				n.makeChildren("O");
 				int min = 100;
+				int sum = 0;
 				for(Node c: n.children){
 					int minimaxVal = minimax(c, true, true);
+					if(minimaxVal>0)
+						sum++;
 					if(minimaxVal<min)
 						min = minimaxVal;
 				}
 				n.score = min;
+				n.sum = sum;
 				return min;
 			}
 		}
 		else{
-			System.out.println("score of board is: "+n.score);
 			return n.score;
 		}
+	}
+	@Override
+	public String getMove() {
+		return lastmove;
 	}
 }

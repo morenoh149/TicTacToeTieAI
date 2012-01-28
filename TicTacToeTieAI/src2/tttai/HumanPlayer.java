@@ -4,11 +4,14 @@ import java.util.Scanner;
 
 public class HumanPlayer implements Player {
 	int playerNum;
-	String type="Human";
+	String lastmove;
 	
 	HumanPlayer(){
 	}
 	
+	public String getType(){
+		return "Human";
+	}
 	@Override
 	public Board makeMove(Board board){
 		Scanner s = new Scanner(System.in);
@@ -17,12 +20,19 @@ public class HumanPlayer implements Player {
 			System.out.println("pick a valid square");
 			move = s.nextInt();
 		}
-		if(board.board[move]=="X"||board.board[move]=="O")
+		if(board.board[move]=="X"||board.board[move]=="O"){
 			try {
 				throw new Exception("square occupied!");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}
+		lastmove = String.valueOf(move);
 		return board.makeMove("O", move);
+	}
+
+	@Override
+	public String getMove() {
+		return lastmove;
 	}
 }

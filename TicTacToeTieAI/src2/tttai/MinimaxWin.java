@@ -1,11 +1,9 @@
 package tttai;
 
-import java.util.Collections;
-
 public class MinimaxWin implements Player {
 	boolean maxTurn;
 	boolean firstTurn;
-	public String type = "Minimax-Win";
+	String lastmove;
 	Node root;
 	Node currentNode;
 
@@ -13,14 +11,17 @@ public class MinimaxWin implements Player {
 		maxTurn=true;
 		firstTurn=true;
 	}
+	public String getType(){
+		return "Minimax-Win";
+	}
 	@Override
 	public Board makeMove(Board b) {
 		if(firstTurn){
-			System.out.println("first turn");
 			root = new Node(b, null);
 			minimax(root, maxTurn, firstTurn);
 			currentNode = root.children.get((int)(Math.random()*10)%9);
 			this.firstTurn=false;
+			lastmove = b.diff(currentNode.board);
 			return currentNode.board;
 		}
 		else{
@@ -28,18 +29,9 @@ public class MinimaxWin implements Player {
 				if(b.equals(c.board)){
 					currentNode = c;
 					maxTurn=true; firstTurn=false;
-					System.out.println("currentnode children are:");
-					int i=0;
-					for(Node d: currentNode.children){
-						System.out.println(d.score);
-						System.out.println(i++);
-						System.out.println(d.board.toString());
-					}
 					int branch = minimax(currentNode, maxTurn, firstTurn);
-					System.out.println("branch found: "+branch);
-					if(currentNode != currentNode.find(branch))
-						System.out.println("moving to lower node");
 					currentNode = currentNode.find(branch);//set the currentNode to the one indicated by minimax
+					lastmove = b.diff(currentNode.board);
 					return currentNode.board;
 				}
 			}
@@ -79,8 +71,11 @@ public class MinimaxWin implements Player {
 			}
 		}
 		else{
-			System.out.println("score of board is: "+n.score);
 			return n.score;
 		}
+	}
+	@Override
+	public String getMove() {
+		return lastmove;
 	}
 }
