@@ -1,0 +1,20 @@
+----------------
+Player Minimax-Win adds a X to position 81 2 3 
+4 5 6 
+7 X 9 
+----------------
+Player SimplePlayer adds a O to position 1O 2 3 
+4 5 6 
+7 X 9 
+----------------
+Player Minimax-Win adds a X to position 7O 2 3 
+4 5 6 
+X X 9 
+----------------
+Player SimplePlayer adds a O to position 2O O 3 
+4 5 6 
+X X 9 
+----------------
+Player Minimax-Win adds a X to position 9O O 3 
+4 5 6 
+X X X 

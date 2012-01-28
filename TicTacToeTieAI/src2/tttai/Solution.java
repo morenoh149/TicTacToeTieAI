@@ -11,8 +11,12 @@ public class Solution {
 		StringBuilder log = new StringBuilder();
 		Board board = new Board();
 		Player opp, minimax;
+		Calendar cal = Calendar.getInstance();
 		if(minimaxVer.equals("win")){
 			minimax = new MinimaxWin();
+		}
+		else if(minimaxVer.equals("ab")){
+			minimax = new AlphaBetaPruning();
 		}
 		else{
 			minimax = new MinimaxTie();

@@ -1,0 +1,36 @@
+----------------
+Player Minimax-Tie adds a X to position 61 2 3 
+4 5 X 
+7 8 9 
+----------------
+Player SimplePlayer adds a O to position 1O 2 3 
+4 5 X 
+7 8 9 
+----------------
+Player Minimax-Tie adds a X to position 2O X 3 
+4 5 X 
+7 8 9 
+----------------
+Player SimplePlayer adds a O to position 3O X O 
+4 5 X 
+7 8 9 
+----------------
+Player Minimax-Tie adds a X to position 4O X O 
+X 5 X 
+7 8 9 
+----------------
+Player SimplePlayer adds a O to position 5O X O 
+X O X 
+7 8 9 
+----------------
+Player Minimax-Tie adds a X to position 7O X O 
+X O X 
+X 8 9 
+----------------
+Player SimplePlayer adds a O to position 8O X O 
+X O X 
+X O 9 
+----------------
+Player Minimax-Tie adds a X to position 9O X O 
+X O X 
+X O X 
