@@ -37,7 +37,7 @@ public class Solution {
 			System.out.println(commentary);
 			log.append(currentState);
 			board = opp.makeMove(board);
-			currentState = boasrd.toString();
+			currentState = board.toString();
 			System.out.println(currentState);
 		}
 		if(board.isOver())
