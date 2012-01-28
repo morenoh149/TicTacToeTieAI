@@ -56,21 +56,21 @@ public class Board {
 	 * returns true if string is the winner
 	 */
 	public boolean testWon(String s){
-		if(board[1]==s&&board[2]==s&&board[3]==s)
+		if(board[1].equals(s)&&board[2].equals(s)&&board[3].equals(s))
 			return true;
-		if(board[4]==s&&board[5]==s&&board[6]==s)
+		if(board[4].equals(s)&&board[5].equals(s)&&board[6].equals(s))
 			return true;
-		if(board[7]==s&&board[8]==s&&board[9]==s)
+		if(board[7].equals(s)&&board[8].equals(s)&&board[9].equals(s))
 			return true;
-		if(board[1]==s&&board[4]==s&&board[7]==s)
+		if(board[1].equals(s)&&board[4].equals(s)&&board[7].equals(s))
 			return true;
-		if(board[2]==s&&board[5]==s&&board[8]==s)
+		if(board[2].equals(s)&&board[5].equals(s)&&board[8].equals(s))
 			return true;
-		if(board[3]==s&&board[6]==s&&board[9]==s)
+		if(board[3].equals(s)&&board[6].equals(s)&&board[9].equals(s))
 			return true;
-		if(board[1]==s&&board[5]==s&&board[9]==s)
+		if(board[1].equals(s)&&board[5].equals(s)&&board[9].equals(s))
 			return true;
-		if(board[3]==s&&board[5]==s&&board[7]==s)
+		if(board[3].equals(s)&&board[5].equals(s)&&board[7].equals(s))
 			return true;
 		return false;
 	}
